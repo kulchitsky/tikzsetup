@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+author: "Boris Demeshev"
+date: "17 January 2015"
+output: pdf_document
+lang: russian
+---
+
+```{r}
+library("knitr")
+library("tikzsetup")
+tikzsetup()
+```
+
+А далее строим график с подписями по-русски:
+```{r}
+library("ggplot2")
+qplot(x=rnorm(100),y=rnorm(100),
+  main="Просто график",
+  xlab="Абсцисса, $x_t=\\varepsilon_t$", ylab="Ордината, $y_t=\\varepsilon_t$" )
+```
+
