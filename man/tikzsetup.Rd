@@ -5,10 +5,12 @@
 \alias{tikzsetup-package}
 \title{tikzsetup}
 \usage{
-tikzsetup(lang = "russian", doc_class_options = "10pt", message = FALSE,
-  warning = FALSE)
+tikzsetup(compiler = "pdftex", lang = "russian",
+  doc_class_options = "10pt", message = FALSE, warning = FALSE)
 }
 \arguments{
+\item{compiler}{currently pdftex and xelatex are supported}
+
 \item{lang}{the language}
 
 \item{doc_class_options}{additional latex document class options}
