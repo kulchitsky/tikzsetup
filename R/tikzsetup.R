@@ -13,6 +13,7 @@ NULL
 #' Setup tikz device for russian Rmd/Rnw files 
 #'
 #' @param lang the language
+#' @param compiler currently pdftex and xelatex are supported
 #' @param doc_class_options additional latex document class options 
 #' @param message logical, should messages be activated, FALSE by default
 #' @param warning logical, should warnings be activated, FALSE by default
