@@ -21,7 +21,8 @@ NULL
 #' @examples
 #' tikzsetup()
 #' tikzsetup(lang="polish")
-tikzsetup  <- function(lang="russian", doc_class_options="10pt",
+tikzsetup  <- function(compiler="pdftex",lang="russian",
+                        doc_class_options="10pt",
                         message=FALSE, warning=FALSE) {
   Sys.setenv(LANG="EN") # Error message MUST be in english
   Sys.setlocale("LC_TIME","C") # correct work of quantmod
@@ -29,7 +30,8 @@ tikzsetup  <- function(lang="russian", doc_class_options="10pt",
   
   opts_chunk$set(dev='tikz', dpi=300, warning=warning, message=message)
   
-  options(tikzDefaultEngine = "pdftex")
+  if (compiler=="xelatex") compiler <- "xetex"
+  options(tikzDefaultEngine = compiler)
   
   options(tikzLatexPackages = c(
     "\\usepackage{amsmath,amssymb,amsfonts}",
@@ -39,6 +41,14 @@ tikzsetup  <- function(lang="russian", doc_class_options="10pt",
     paste0("\\usepackage[",lang,"]{babel}"),
     paste0("\\selectlanguage{",lang,"}"),
     "\\usepackage{standalone}"
+  ))
+  
+  options(tikzXelatexPackages=c(
+    "\\nonstopmode",
+    "\\usepackage{tikz}",
+    "\\usepackage[active,tightpage,xetex]{preview}",
+    "\\PreviewEnvironment{pgfpicture}",
+    "\\setlength\\PreviewBorder{0pt}"
   ))
   
   #options(tikzMetricsDictionary="/Users/boris/Documents/r_packages/") # speeds tikz up
