@@ -46,6 +46,7 @@ tikzsetup  <- function(compiler="pdftex",lang="russian",
     "\\usepackage{tikz}",
     "\\usepackage[utf8]{inputenc}",
     "\\usetikzlibrary{calc}",
+    "\\usepackage[paperwidth=145mm,paperheight=215mm, height=182mm,width=113mm,top=20mm,includefoot]{geometry}",
     paste0("\\usepackage[",lang,"]{babel}"),
     paste0("\\selectlanguage{",lang,"}"),
     "\\usepackage{standalone}"
