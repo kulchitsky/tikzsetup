@@ -42,7 +42,7 @@ tikzsetup  <- function(compiler="pdftex",lang="russian",
   options(tikzDefaultEngine = compiler)
   
   options(tikzLatexPackages = c(
-    "\\usepackage{geometry}",
+    # "\\usepackage{geometry}",
     "\\usepackage{amsmath,amssymb,amsfonts}",
     "\\usepackage{tikz}",
     "\\usepackage[utf8]{inputenc}",
