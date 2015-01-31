@@ -55,7 +55,7 @@ tikzsetup  <- function(compiler="pdftex",lang="russian",
   #options(tikzMetricsDictionary="/Users/boris/Documents/r_packages/") # speeds tikz up
   
   options(tikzDocumentDeclaration = 
-            paste0("\\documentclass[",doc_class_options,"]{book}\n")) # was "standalone"
+            paste0("\\documentclass[",doc_class_options,"]{standalone}\n")) # book will not work
   
   options(tikzMetricPackages = c(
     "\\usepackage[utf8]{inputenc}",
