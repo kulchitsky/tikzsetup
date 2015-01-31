@@ -6,7 +6,7 @@
 \title{tikzsetup}
 \usage{
 tikzsetup(compiler = "pdftex", lang = "russian",
-  doc_class_options = "10pt", message = FALSE, warning = FALSE)
+  doc_class_options = "10pt,a4paper", message = FALSE, warning = FALSE)
 }
 \arguments{
 \item{compiler}{currently pdftex and xelatex are supported}
