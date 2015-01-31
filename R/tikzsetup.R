@@ -27,8 +27,13 @@ tikzsetup  <- function(compiler="pdftex",lang="russian",
                         message=FALSE, warning=FALSE) {
   # http://stackoverflow.com/questions/15801683/knitr-and-tikzdevice-not-working-together-with-article-options
   
-  Sys.setenv(LANG="EN") # Error message MUST be in english
-  Sys.setlocale("LC_TIME","C") # correct work of quantmod
+  message("Known conflicts:")
+  message("* \\embedfile command")
+  message("* counter based on chapter")
+  
+  
+  Sys.setenv(LANG="EN") # Error message MUST be in english! CHECK
+  Sys.setlocale("LC_TIME","C") # correct work of quantmod CHECK
   
   
   opts_chunk$set(dev='tikz', dpi=300, warning=warning, message=message)
