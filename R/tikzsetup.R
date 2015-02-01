@@ -19,9 +19,8 @@ NULL
 #' @param warning logical, should warnings be activated, FALSE by default
 #' @param setJustPlot logical, TRUE by default. Sometimes tikzsetup()
 #' is called from a big-big document with a bunch of packages which may
-#' interfere with tikzsetup(). In this one may use something like
-#' \\ifdef{\JustPlot}{}{some dangerous command}
-#' 
+#' interfere with tikzsetup(). In this one may use the value true/false
+#' of JustPlot macro to load (or not load) some package.
 #' @export
 #' @return nothing
 #' @examples
