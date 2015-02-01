@@ -17,24 +17,39 @@ NULL
 #' @param doc_class_options additional latex document class options 
 #' @param message logical, should messages be activated, FALSE by default
 #' @param warning logical, should warnings be activated, FALSE by default
+#' @param setJustPlot logical, TRUE by default. Sometimes tikzsetup()
+#' is called from a big-big document with a bunch of packages which may
+#' interfere with tikzsetup(). In this one may use the value true/false
+#' of JustPlot macro to load (or not load) some package.
 #' @export
 #' @return nothing
 #' @examples
 #' tikzsetup()
 #' tikzsetup(lang="polish")
 tikzsetup  <- function(compiler="pdftex",lang="russian",
-                        doc_class_options="10pt",
-                        message=FALSE, warning=FALSE) {
-  Sys.setenv(LANG="EN") # Error message MUST be in english
-  Sys.setlocale("LC_TIME","C") # correct work of quantmod
+                        doc_class_options="12pt,a4paper",
+                        message=FALSE, warning=FALSE,
+                        setJustPlot = TRUE,
+                        pt_size = 12) {
+  # http://stackoverflow.com/questions/15801683/knitr-and-tikzdevice-not-working-together-with-article-options
+  
+  message("Known conflicts:")
+  message("* \\embedfile command")
+  message("* counter based on chapter")
   
   
-  opts_chunk$set(dev='tikz', dpi=300, warning=warning, message=message)
+  Sys.setenv(LANG="EN") # Error message MUST be in english! CHECK
+  Sys.setlocale("LC_TIME","C") # correct work of quantmod CHECK
+  
+  
+  opts_chunk$set(dev='tikz', warning=warning, message=message, dev.args=list(pointsize=pt_size))
   
   if (compiler=="xelatex") compiler <- "xetex"
   options(tikzDefaultEngine = compiler)
   
   options(tikzLatexPackages = c(
+    # "\\usepackage{geometry}",
+    "\\def\\JustPlot{true}",
     "\\usepackage{amsmath,amssymb,amsfonts}",
     "\\usepackage{tikz}",
     "\\usepackage[utf8]{inputenc}",
@@ -55,7 +70,7 @@ tikzsetup  <- function(compiler="pdftex",lang="russian",
   #options(tikzMetricsDictionary="/Users/boris/Documents/r_packages/") # speeds tikz up
   
   options(tikzDocumentDeclaration = 
-            paste0("\\documentclass[",doc_class_options,"]{standalone}\n"))
+            paste0("\\documentclass[",doc_class_options,"]{standalone}\n")) # book will not work
   
   options(tikzMetricPackages = c(
     "\\usepackage[utf8]{inputenc}",

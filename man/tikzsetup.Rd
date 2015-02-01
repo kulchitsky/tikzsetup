@@ -6,7 +6,8 @@
 \title{tikzsetup}
 \usage{
 tikzsetup(compiler = "pdftex", lang = "russian",
-  doc_class_options = "10pt", message = FALSE, warning = FALSE)
+  doc_class_options = "12pt,a4paper", message = FALSE, warning = FALSE,
+  setJustPlot = TRUE, pt_size = 12)
 }
 \arguments{
 \item{compiler}{currently pdftex and xelatex are supported}
@@ -18,6 +19,11 @@ tikzsetup(compiler = "pdftex", lang = "russian",
 \item{message}{logical, should messages be activated, FALSE by default}
 
 \item{warning}{logical, should warnings be activated, FALSE by default}
+
+\item{setJustPlot}{logical, TRUE by default. Sometimes tikzsetup()
+is called from a big-big document with a bunch of packages which may
+interfere with tikzsetup(). In this one may use something like
+\\ifdef{\JustPlot}{}{some dangerous command}}
 }
 \value{
 nothing
