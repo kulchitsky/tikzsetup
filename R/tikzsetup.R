@@ -17,14 +17,21 @@ NULL
 #' @param doc_class_options additional latex document class options 
 #' @param message logical, should messages be activated, FALSE by default
 #' @param warning logical, should warnings be activated, FALSE by default
+#' @param setJustPlot logical, TRUE by default. Sometimes tikzsetup()
+#' is called from a big-big document with a bunch of packages which may
+#' interfere with tikzsetup(). In this one may use something like
+#' \\ifdef{\JustPlot}{}{some dangerous command}
+#' 
 #' @export
 #' @return nothing
 #' @examples
 #' tikzsetup()
 #' tikzsetup(lang="polish")
 tikzsetup  <- function(compiler="pdftex",lang="russian",
-                        doc_class_options="10pt,a4paper",
-                        message=FALSE, warning=FALSE) {
+                        doc_class_options="12pt,a4paper",
+                        message=FALSE, warning=FALSE,
+                        setJustPlot = TRUE,
+                        pt_size = 12) {
   # http://stackoverflow.com/questions/15801683/knitr-and-tikzdevice-not-working-together-with-article-options
   
   message("Known conflicts:")
@@ -36,13 +43,14 @@ tikzsetup  <- function(compiler="pdftex",lang="russian",
   Sys.setlocale("LC_TIME","C") # correct work of quantmod CHECK
   
   
-  opts_chunk$set(dev='tikz', dpi=300, warning=warning, message=message)
+  opts_chunk$set(dev='tikz', warning=warning, message=message, dev.args=list(pointsize=pt_size))
   
   if (compiler=="xelatex") compiler <- "xetex"
   options(tikzDefaultEngine = compiler)
   
   options(tikzLatexPackages = c(
     # "\\usepackage{geometry}",
+    "\\def\\JustPlot{true}",
     "\\usepackage{amsmath,amssymb,amsfonts}",
     "\\usepackage{tikz}",
     "\\usepackage[utf8]{inputenc}",
