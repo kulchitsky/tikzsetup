@@ -64,13 +64,19 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "}"
   ))
   
-  options(tikzXelatexPackages=c(
-    "\\nonstopmode",
-    "\\usepackage{tikz}",
-    "\\usepackage[active,tightpage,xetex]{preview}",
-    "\\PreviewEnvironment{pgfpicture}",
-    "\\setlength\\PreviewBorder{0pt}"
-  ))
+  options(tikzXelatexPackages)=c(
+    getOption("tikzXelatexPackages"),
+    "\\usepackage[babel]{csquotes}",
+    "\\MakeOuterQuote{\"}"
+    ))
+
+  # options(tikzXelatexPackages=c(
+  #   "\\nonstopmode",
+  #   "\\usepackage{tikz}",
+  #   "\\usepackage[active,tightpage,xetex]{preview}",
+  #   "\\PreviewEnvironment{pgfpicture}",
+  #   "\\setlength\\PreviewBorder{0pt}"
+  # ))
   
   #options(tikzMetricsDictionary="/Users/boris/Documents/r_packages/") # speeds tikz up
   
@@ -79,7 +85,7 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
   
   options(tikzMetricPackages = c(
     "\\usepackage[utf8]{inputenc}",
-    "\\usetikzlibrary{calc}",
+    "\\usetikzlibrary{calc}", 
     paste0("\\usepackage[",lang,"]{babel}"),
     paste0("\\selectlanguage{",lang,"}")
   ))
