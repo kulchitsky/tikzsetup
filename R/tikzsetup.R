@@ -26,25 +26,24 @@ NULL
 #' @examples
 #' tikzsetup()
 #' tikzsetup(lang="polish")
-tikzsetup  <- function(compiler="pdftex",lang="russian",
-                        doc_class_options="12pt,a4paper",
+tikzsetup  <- function(compiler=c("pdftex","xetex","luatex"),lang="russian",
+                        doc_class_options=NULL, 
                         message=FALSE, warning=FALSE,
                         setJustPlot = TRUE,
                         pt_size = 12) {
-  # http://stackoverflow.com/questions/15801683/knitr-and-tikzdevice-not-working-together-with-article-options
-  
-  message("Known conflicts:")
-  message("* \\embedfile command")
-  message("* counter based on chapter")
-  
-  
+
   Sys.setenv(LANG="EN") # Error message MUST be in english! CHECK
   Sys.setlocale("LC_TIME","C") # correct work of quantmod CHECK
   
+  # http://stackoverflow.com/questions/15801683/knitr-and-tikzdevice-not-working-together-with-article-options
   
+  message("One may conditionally load conflicting packages using the true/false value of JustPlot.")
+  
+  if(is.null(doc_class_options)) doc_class_options <- paste0(pt_size,"pt,a4paper")
+    
   opts_chunk$set(dev='tikz', warning=warning, message=message, dev.args=list(pointsize=pt_size))
   
-  if (compiler=="xelatex") compiler <- "xetex"
+  compiler <- match.arg(compiler) # magic :)
   options(tikzDefaultEngine = compiler)
   
   options(tikzLatexPackages = c(
