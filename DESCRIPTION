@@ -6,8 +6,7 @@ Date: 2015-01-17
 Author: Boris Demeshev
 Maintainer: Boris Demeshev <boris.demeshev@gmail.com>
 Imports:
-    knitr (>= 1.8),
-    tikzDevice (>= 0.7.0)
+    knitr (>= 1.8)
 Description: tikzsetup-package: function to setup tikz device for Rmd/Rnw files.
     The main goal is the support out of the box of cyrillic letters.
 License: MIT

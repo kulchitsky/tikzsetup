@@ -3,4 +3,5 @@
 export(tikzsetup)
 export(tikzmagic)
 import(knitr)
-import(tikzDevice)
+# import(tikzDevice)
+# # tikzDevice (>= 0.7.0)
