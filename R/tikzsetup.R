@@ -58,7 +58,7 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "\\usepackage[babel]{csquotes}",
     "\\MakeOuterQuote{\"}",
     "\\usepackage{etoolbox}",
-    "\\ifdef{\JustPlot}{}{",
+    "\\ifdef{\\JustPlot}{}{",
     paste0("\\usepackage[",lang,"]{babel}\n"),
     paste0("\\selectlanguage{",lang,"}\n"),
     "}"
