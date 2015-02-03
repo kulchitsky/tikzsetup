@@ -2,3 +2,5 @@
 inst/example/rmd_example.pdf
 
 inst/example/rmd_example-tikzDictionary
+*.sublime-project
+*.sublime-workspace

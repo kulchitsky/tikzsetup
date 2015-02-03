@@ -25,8 +25,8 @@ NULL
 #' @return nothing
 #' @examples
 #' tikzsetup()
-#' tikzsetup(lang="polish")
-tikzsetup  <- function(compiler=c("pdftex","xetex","luatex"),lang="russian",
+#' tikzmagic()
+tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="russian",
                         doc_class_options=NULL, 
                         message=FALSE, warning=FALSE,
                         setJustPlot = TRUE,
@@ -44,6 +44,7 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","luatex"),lang="russian",
   opts_chunk$set(dev='tikz', warning=warning, message=message, dev.args=list(pointsize=pt_size))
   
   compiler <- match.arg(compiler) # magic :)
+  if (compiler=="xelatex") compiler <- "xetex"
   options(tikzDefaultEngine = compiler)
   
   options(tikzLatexPackages = c(
@@ -53,8 +54,8 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","luatex"),lang="russian",
     "\\usepackage{tikz}",
     "\\usepackage[utf8]{inputenc}",
     "\\usetikzlibrary{calc}",
-    paste0("\\usepackage[",lang,"]{babel}"),
-    paste0("\\selectlanguage{",lang,"}"),
+    # paste0("\\usepackage[",lang,"]{babel}"),
+    # paste0("\\selectlanguage{",lang,"}"),
     "\\usepackage{standalone}"
   ))
   
@@ -77,4 +78,14 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","luatex"),lang="russian",
     paste0("\\usepackage[",lang,"]{babel}"),
     paste0("\\selectlanguage{",lang,"}")
   ))
+}
+
+tikzmagic <- function() {
+  if (!("devtools" %in% installed.packages())) install.packages("devtools")
+  library(devtools)
+  if ("filehash" %in% installed.packages()) remove.packages("filehash")
+  library(devtools)
+  install_github("rdpeng/filehash",ref="next")
+  if ("tikzDevice" %in% installed.packages()) remove.packages("tikzDevice")
+  install_github("kulchitsky/tikzDevice")
 }
