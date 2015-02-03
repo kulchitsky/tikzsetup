@@ -72,7 +72,7 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "\\setlength\\PreviewBorder{0pt}"
   ))
 
-  options(tikzXelatexPackages)=c(
+  options(tikzXelatexPackages=c(
     getOption("tikzXelatexPackages"),
     "\\usepackage[babel]{csquotes}",
     "\\MakeOuterQuote{\"}",
