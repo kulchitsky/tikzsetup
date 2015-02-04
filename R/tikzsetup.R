@@ -70,6 +70,7 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "\\usepackage[active,tightpage,xetex]{preview}",
     "\\PreviewEnvironment{pgfpicture}",
     "\\setlength\\PreviewBorder{0pt}",
+    "\\makeatletter",
     "\\@ifpackageloaded{fontspec}{}{\\usepackage{fontspec}}",
     "\\@ifpackageloaded{polyglossia}{}{\\usepackage{polyglossia}}",
     "\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
@@ -79,7 +80,8 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "\\newfontfamily\\cyrillicfont[Mapping=tex-text]{Times New Roman}",
     "\\newfontfamily{\\cyrillicfonttt}{Times New Roman}",
     "\\@ifpackageloaded{xecyr}{}{\\usepackage{xecyr}}",
-    "\\defaultfontfeatures{Scale=MatchLowercase}"
+    "\\defaultfontfeatures{Scale=MatchLowercase}",
+    "\\makeatother"
   ))
 
   options(tikzXelatexPackages=c(
