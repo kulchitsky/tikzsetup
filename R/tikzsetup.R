@@ -69,16 +69,23 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "\\usepackage{tikz}",
     "\\usepackage[active,tightpage,xetex]{preview}",
     "\\PreviewEnvironment{pgfpicture}",
-    "\\setlength\\PreviewBorder{0pt}"
+    "\\setlength\\PreviewBorder{0pt}",
+    "\\@ifpackageloaded{fontspec}{}{\\usepackage{fontspec}}",
+    "\\@ifpackageloaded{polyglossia}{}{\\usepackage{polyglossia}}",
+    "\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
+    "\\setmainfont[Mapping=tex-text]{Times New Roman}",
+    "\\@ifpackageloaded{xltxtra}{}{\\usepackage{xltxtra}}",
+    "\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
+    "\\newfontfamily\\cyrillicfont[Mapping=tex-text]{Times New Roman}",
+    "\\newfontfamily{\\cyrillicfonttt}{Times New Roman}",
+    "\\@ifpackageloaded{xecyr}{}{\\usepackage{xecyr}}",
+    "\\defaultfontfeatures{Scale=MatchLowercase}"
   ))
 
   options(tikzXelatexPackages=c(
     getOption("tikzXelatexPackages"),
     "\\usepackage[babel]{csquotes}",
-    "\\MakeOuterQuote{\"}",
-    "\\usepackage{polyglossia}",
-    "\\usepackage{xunicode}",
-    "\\setmainfont[Mapping=tex-text]{Times New Roman}"
+    "\\MakeOuterQuote{\"}"
     ))
   
   #options(tikzMetricsDictionary="/Users/boris/Documents/r_packages/") # speeds tikz up
