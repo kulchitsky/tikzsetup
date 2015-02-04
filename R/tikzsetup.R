@@ -3,7 +3,8 @@
 #' @name tikzsetup
 #' @docType package
 #' @author Boris Demeshev 
-#' @import knitr tikzDevice
+#' @import knitr 
+#' @note maybe, sometime... tikzDevice
 NULL
 
 #' Setup tikz device for russian Rmd/Rnw files 
@@ -25,7 +26,6 @@ NULL
 #' @return nothing
 #' @examples
 #' tikzsetup()
-#' tikzmagic()
 tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="russian",
                         doc_class_options=NULL, 
                         message=FALSE, warning=FALSE,
@@ -102,6 +102,14 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     paste0("\\selectlanguage{",lang,"}")
   ))
 }
+
+#' Lanch this function after installation of the tikzsetup.
+#' This should be done in clear R, when all packages are unloaded.
+#' 
+#' @export
+#' @return nothing
+#' @examples
+#' tikzmagic()
 
 tikzmagic <- function() {
   if (!("devtools" %in% installed.packages())) install.packages("devtools")
