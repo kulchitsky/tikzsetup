@@ -70,15 +70,15 @@ tikzsetup  <- function(compiler=c("pdftex","xetex","xelatex","luatex"),lang="rus
     "\\usepackage[active,tightpage,xetex]{preview}",
     "\\PreviewEnvironment{pgfpicture}",
     "\\setlength\\PreviewBorder{0pt}",
-    "\\\@ifpackageloaded{fontspec}{}{\\usepackage{fontspec}}",
-    "\\\@ifpackageloaded{polyglossia}{}{\\usepackage{polyglossia}}",
-    "\\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
+    "\\@ifpackageloaded{fontspec}{}{\\usepackage{fontspec}}",
+    "\\@ifpackageloaded{polyglossia}{}{\\usepackage{polyglossia}}",
+    "\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
     "\\setmainfont[Mapping=tex-text]{Times New Roman}",
-    "\\\@ifpackageloaded{xltxtra}{}{\\usepackage{xltxtra}}",
-    "\\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
+    "\\@ifpackageloaded{xltxtra}{}{\\usepackage{xltxtra}}",
+    "\\@ifpackageloaded{xunicode}{}{\\usepackage{xunicode}}",
     "\\newfontfamily\\cyrillicfont[Mapping=tex-text]{Times New Roman}",
     "\\newfontfamily{\\cyrillicfonttt}{Times New Roman}",
-    "\\\@ifpackageloaded{xecyr}{}{\\usepackage{xecyr}}",
+    "\\@ifpackageloaded{xecyr}{}{\\usepackage{xecyr}}",
     "\\defaultfontfeatures{Scale=MatchLowercase}"
   ))
 
